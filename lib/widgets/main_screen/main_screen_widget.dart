@@ -21,17 +21,22 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   }
   @override
   Widget build(BuildContext context) {
+    const alt_news = 'Новости';
+    const alt_video = 'Видео';
+    const alt_lk = 'Личные настройки';
+    const alt_magazine = 'Магазин';
+    const alt_about = 'О нас';
     return Scaffold(
-      appBar: AppBar(title: Text('TMDB'),
+      appBar: AppBar(title: Text('Strong News'),
       ),
       body: IndexedStack(
         index: _selectedTab,
         children: [
-          Text('Новости'),
+          Center(child: Text(alt_news)),
           MovieListWidget(),
-          Text('Личные данные'),
-          Text('Снаряды'),
-          Text('О нас'),
+          Center(child: Text(alt_lk)),
+          Center(child: Text(alt_magazine)),
+          Center(child: Text(alt_about)),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -40,23 +45,23 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.list_alt),
-              label: 'Новости',
+              label: alt_news,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.tv_sharp),
-            label: 'Видео'
+            label: alt_video
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
-            label: 'Личные настройки'
+            label: alt_lk
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.sports_volleyball_sharp),
-              label: 'Снаряды'
+              label: alt_magazine
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.flag_outlined),
-              label: 'О нас'
+              label: alt_about
           ),
         ],
       onTap: (index){
