@@ -18,16 +18,16 @@ class Movie{
   });
 }
 
-class MovieListWidget extends StatefulWidget {
+class NewsListWidget extends StatefulWidget {
 
 
-  MovieListWidget({Key? key}) : super(key: key);
+  NewsListWidget({Key? key}) : super(key: key);
 
   @override
-  _MovieListWidgetState createState() => _MovieListWidgetState();
+  _NewsListWidgetState createState() => _NewsListWidgetState();
 }
 
-class _MovieListWidgetState extends State<MovieListWidget> {
+class _NewsListWidgetState extends State<NewsListWidget> {
   final _movies = [
   Movie(
     id: 1,
@@ -52,41 +52,6 @@ class _MovieListWidgetState extends State<MovieListWidget> {
       id: 4,
       imageName: 'images/movie.jpg',
       title: 'Смертельная битва 4',
-      time: 'April 7, 2021',
-      description: 'Описание №1',
-    ),
-    Movie(
-      id: 5,
-      imageName: 'images/movie.jpg',
-      title: 'Смертельная битва 5',
-      time: 'April 7, 2021',
-      description: 'Описание №1',
-    ),
-    Movie(
-      id: 6,
-      imageName: 'images/movie.jpg',
-      title: 'Смертельная битва 6',
-      time: 'April 7, 2021',
-      description: 'Описание №1',
-    ),
-    Movie(
-      id: 7,
-      imageName: 'images/movie.jpg',
-      title: 'Смертельная битва 7',
-      time: 'April 7, 2021',
-      description: 'Описание №1',
-    ),
-    Movie(
-      id: 8,
-      imageName: 'images/movie.jpg',
-      title: 'Смертельная битва 8',
-      time: 'April 7, 2021',
-      description: 'Описание №1',
-    ),
-    Movie(
-      id: 9,
-      imageName: 'images/movie.jpg',
-      title: 'Смертельная битва 9',
       time: 'April 7, 2021',
       description: 'Описание №1',
     ),
@@ -132,17 +97,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.black.withOpacity(0.2)),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
-                    ),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: Colors.black.withOpacity(1),
-                    //     offset: Offset(0,4),
-                    //     blurRadius: 8,
-                    //   )
-                    // ]
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
                   clipBehavior: Clip.hardEdge,
                   child: Row(

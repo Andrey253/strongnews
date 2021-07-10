@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:themoviedb/Theme/app_colors.dart';
+import 'package:themoviedb/api/api_client.dart';
 import 'package:themoviedb/widgets/movie_list/movie_list_widget.dart';
+import 'package:themoviedb/widgets/movie_list/news_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   }
   @override
   Widget build(BuildContext context) {
+    ApiClient().getBearerToken();
     const alt_news = 'Новости';
     const alt_video = 'Видео';
     const alt_lk = 'Личные настройки';
@@ -32,7 +35,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       body: IndexedStack(
         index: _selectedTab,
         children: [
-          Center(child: Text(alt_news)),
+          NewsListWidget(),
           MovieListWidget(),
           Center(child: Text(alt_lk)),
           Center(child: Text(alt_magazine)),
@@ -41,7 +44,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
-        fixedColor: Color(0xFFD50000),
+        fixedColor: Color(0xFFEE0000),
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.list_alt),
