@@ -1,4 +1,4 @@
-import 'package:themoviedb/data/response_result.dart';
+import 'package:themoviedb/data/token_access/response_result.dart';
 
 class ResponseToken {
   int statusCode;

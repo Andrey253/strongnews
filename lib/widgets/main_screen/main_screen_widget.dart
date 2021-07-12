@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:themoviedb/Theme/app_colors.dart';
 import 'package:themoviedb/api/api_client.dart';
+import 'package:themoviedb/widgets/main_screen/main_screen_model.dart';
 import 'package:themoviedb/widgets/movie_list/movie_list_widget.dart';
 import 'package:themoviedb/widgets/movie_list/news_list_widget.dart';
 
@@ -15,15 +14,21 @@ class MainScreenWidget extends StatefulWidget {
 class _MainScreenWidgetState extends State<MainScreenWidget> {
   int _selectedTab = 0;
 
+
   void onSelectesTap(int index){
     if (_selectedTab == index) return;
     setState(() {
       _selectedTab = index;
     });
   }
+
+  @override
+  void initState() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    ApiClient().getBearerToken();
     const alt_news = 'Новости';
     const alt_video = 'Видео';
     const alt_lk = 'Личные настройки';

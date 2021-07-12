@@ -10,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:themoviedb/api/api_client.dart';
 
 import 'package:themoviedb/main.dart';
+import 'package:themoviedb/widgets/app/app.dart';
 
 void main() {
 
@@ -29,9 +30,5 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
-  mytest(){
-    ApiClient().getBearerToken();
 
-    expect(find.text('1'), findsOneWidget);
-  }
 }

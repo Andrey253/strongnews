@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:themoviedb/ui/navigation/main_navigation.dart';
 
 class Movie{
   final int id;
@@ -176,9 +177,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   color: Colors.transparent,
                   child: InkWell(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    onTap: (){
-                      _onMovieTap(index);
-                    },
+                    onTap: (){ },
                   ),
                 )
               ],
@@ -200,10 +199,4 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     );
   }
 
-  void _onMovieTap(int index) {
-    final id = _movies[index].id;
-    Navigator.of(context).pushNamed('/main_screen/movie_datails',
-        arguments: id);
-    //print(index);
-  }
 }
