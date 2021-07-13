@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:themoviedb/Theme/app_colors.dart';
 import 'package:themoviedb/widgets/auth/auth_model.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -12,9 +13,12 @@ class _AuthWidgetState extends State<AuthWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
-      body: SingleChildScrollView(
-        child: _HeaderWidget(),
+      body: Container(
+        decoration: AppBoxDecoration.appGradient,
+        height: double.infinity,
+        child: SingleChildScrollView(
+          child: _HeaderWidget(),
+        ),
       ),
     );
   }
@@ -157,12 +161,14 @@ class _AuthButtonWidget extends StatelessWidget {
 
     return ElevatedButton(
         onPressed: onPressed,
-        clipBehavior: Clip.hardEdge,
+       // clipBehavior: Clip.hardEdge,
         style: ButtonStyle(
           enableFeedback: false,
           backgroundColor: model?.colorButton,
         ),
-        child: Container(height: 60, child: Center(child: child)));
+        child: Container(
+            height: 60,
+            child: Center(child: child)));
   }
 }
 

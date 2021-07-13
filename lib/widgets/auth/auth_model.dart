@@ -8,13 +8,13 @@ class AuthModel extends ChangeNotifier {
   final _apiClient = ApiClient();
   final _authDataProvider = AuthDataProvider();
 
-  final loginTextController = TextEditingController(text: 'l');
-  final passwordTextController = TextEditingController(text: 'pas');
+  final loginTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
   String? _errorMessege;
 
   String? get errorMassege => _errorMessege;
   bool _isAuthProgress = false;
-  bool _isCheckedLoginAndPassword = true;
+  bool _isCheckedLoginAndPassword = false;
   bool get canStartAuth => !_isAuthProgress && _isCheckedLoginAndPassword;
   bool get isAuthProgress => _isAuthProgress;
   var colorButton = MaterialStateProperty.all(Colors.pink.shade200);

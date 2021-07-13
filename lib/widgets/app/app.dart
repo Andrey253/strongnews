@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: AppColors.mainDarkBlue,
         ),
-
       ),
       routes: mainNavigation.routes,
       initialRoute: mainNavigation.initialRout(false),
