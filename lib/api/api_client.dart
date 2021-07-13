@@ -39,8 +39,17 @@ class ApiClient {
         .toList()
         .then((v) => v.join())
         .then((value) => jsonDecode(value) as Map<String, dynamic>);
-   // print ('json      ${json.toString()} /n ');
-    print ('Ожидаем!     ');
+    //print ('json      ${json.toString()} /n ');
+
+
+    // print ('jsonStatusCode     $jsonStatusCode');
+    // print ('jsonResult     ${jsonResult}');
+
+    // final dynamic jsonCount = jsonResult['count'] as int;
+    // final dynamic jsonPosts = jsonResult['posts'] as List<dynamic>;
+    // print ('jsonCount     $jsonCount');
+    // print ('jsonPosts     $jsonPosts');
+
     final data_model_news =
         DataModelNews.fromJson(json as Map<String, dynamic> );
     print ('data_model_news     ');

@@ -21,7 +21,7 @@ class Result {
   List<Posts> posts;
 
   Result({required this.count, required this.posts});
-  factory Result.fromJson(Map<String, dynamic> json) =>
+  factory Result.fromJson(dynamic json) =>
       _$ResultFromJson( json);
 }
 @JsonSerializable()
@@ -29,13 +29,13 @@ class Posts {
   int id;
   Meta meta;
   String? caption;
-  List<Null> tags;
+  List<dynamic> tags;
   Null location;
   int userId;
   String? photoId;
   String createdAt;
   String updatedAt;
-  Photo? photo;
+  Photo photo;
   User user;
 
   Posts(
@@ -56,7 +56,7 @@ class Posts {
 }
 @JsonSerializable()
 class Meta {
-  List<Null> entries;
+  List<dynamic> entries;
 
   Meta({required this.entries});
 
@@ -71,7 +71,7 @@ class Photo {
 
   Photo({required this.height, required this.width, required this.id});
 
-  factory Photo.fromJson(Map<String, dynamic> json) =>
+  factory Photo.fromJson(dynamic json) =>
       _$PhotoFromJson(json);
 }
 @JsonSerializable()
