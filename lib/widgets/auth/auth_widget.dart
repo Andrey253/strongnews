@@ -46,9 +46,16 @@ class _HeaderWidget extends StatelessWidget {
     );
   }
 }
-class _FormWidget extends StatelessWidget {
+
+class _FormWidget extends StatefulWidget {
   const _FormWidget({Key? key}) : super(key: key);
 
+  @override
+  __FormWidgetState createState() => __FormWidgetState();
+}
+
+class __FormWidgetState extends State<_FormWidget> {
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     final model = AuthProvider.read(context)?.model;
@@ -57,8 +64,19 @@ class _FormWidget extends StatelessWidget {
       color: Colors.white,
     );
     final inputDecoration = InputDecoration(
+      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      isCollapsed: true,
+    );
+
+    final inputDecorationPassword = InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        isCollapsed: true);
+        isCollapsed: true,
+        suffixIcon: IconButton(
+            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+            onPressed: () {
+              _isObscure = !_isObscure;
+              setState(() {});
+            }));
 
     return Container(
       decoration: BoxDecoration(
@@ -86,10 +104,11 @@ class _FormWidget extends StatelessWidget {
             SizedBox(height: 25),
             Text('Password', style: TextStyle(color: Colors.grey)),
             TextField(
-                onChanged: (value) => {model?.checkingLoginAndPassword()},
-                controller: model?.passwordTextController,
-                decoration: inputDecoration,
-                obscureText: true),
+              onChanged: (value) => {model?.checkingLoginAndPassword()},
+              controller: model?.passwordTextController,
+              decoration: inputDecorationPassword,
+              obscureText: _isObscure,
+            ),
             SizedBox(height: 50),
             _AuthButtonWidget(),
             SizedBox(height: 45),
@@ -133,11 +152,13 @@ class _AuthButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = AuthProvider.watch(context)?.model;
-    final onPressed = model?.canStartAuth == true ? () => model?.auth(context) : null;
+    final onPressed =
+        model?.canStartAuth == true ? () => model?.auth(context) : null;
     final child = model?.isAuthProgress == true
-        ? SizedBox(width: 20, height: 20,child: CircularProgressIndicator())
-        : const Text('Sign in', style: TextStyle(fontSize: 20, color: Colors.white));
-    
+        ? SizedBox(width: 20, height: 20, child: CircularProgressIndicator())
+        : const Text('Sign in',
+            style: TextStyle(fontSize: 20, color: Colors.white));
+
     return ElevatedButton(
         onPressed: onPressed,
         clipBehavior: Clip.hardEdge,
@@ -145,16 +166,17 @@ class _AuthButtonWidget extends StatelessWidget {
           enableFeedback: false,
           backgroundColor: model?.colorButton,
         ),
-        child: Container(height: 60,child: Center(child: child)));
+        child: Container(height: 60, child: Center(child: child)));
   }
 }
+
 class _ErrorMassege extends StatelessWidget {
   const _ErrorMassege({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final errorMassege = AuthProvider.watch(context)?.model.errorMassege;
-    if (errorMassege==null) return const SizedBox.shrink();
+    if (errorMassege == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Text(

@@ -13,12 +13,6 @@ DataModelNews _$DataModelNewsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DataModelNewsToJson(DataModelNews instance) =>
-    <String, dynamic>{
-      'statusCode': instance.statusCode,
-      'result': instance.result,
-    };
-
 Result _$ResultFromJson(dynamic json) {
   return Result(
     count: json['count'] as int,
@@ -27,11 +21,6 @@ Result _$ResultFromJson(dynamic json) {
         .toList(),
   );
 }
-
-Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
-  'count': instance.count,
-  'posts': instance.posts,
-};
 
 Posts _$PostsFromJson(Map<String, dynamic> json) {
   return Posts(
@@ -49,32 +38,19 @@ Posts _$PostsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PostsToJson(Posts instance) => <String, dynamic>{
-  'id': instance.id,
-  'meta': instance.meta,
-  'caption': instance.caption,
-  'tags': instance.tags,
-  'location': instance.location,
-  'userId': instance.userId,
-  'photoId': instance.photoId,
-  'createdAt': instance.createdAt,
-  'updatedAt': instance.updatedAt,
-  'photo': instance.photo,
-  'user': instance.user,
-};
-
 Meta _$MetaFromJson(Map<String, dynamic> json) {
   return Meta(
     entries: json['entries'] as List<dynamic>,
   );
 }
 
-Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
-  'entries': instance.entries,
-};
-
 Photo _$PhotoFromJson(dynamic json) {
-  if (json == null) return Photo(height: 0, width: 0, id: '',);
+  if (json == null)
+    return Photo(
+      height: 0,
+      width: 0,
+      id: '',
+    );
   else
     return Photo(
       height: json['height'] as int,
@@ -82,12 +58,6 @@ Photo _$PhotoFromJson(dynamic json) {
       id: json['id'] as String,
     );
 }
-
-Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
-  'height': instance.height,
-  'width': instance.width,
-  'id': instance.id,
-};
 
 User _$UserFromJson(Map<String, dynamic> json) {
   return User(
@@ -98,11 +68,3 @@ User _$UserFromJson(Map<String, dynamic> json) {
     lastName: json['lastName'] as String,
   );
 }
-
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-  'id': instance.id,
-  'username': instance.username,
-  'avatar': instance.avatar,
-  'firstName': instance.firstName,
-  'lastName': instance.lastName,
-};

@@ -14,7 +14,7 @@ class AuthModel extends ChangeNotifier {
 
   String? get errorMassege => _errorMessege;
   bool _isAuthProgress = false;
-  bool _isCheckedLoginAndPassword = false;
+  bool _isCheckedLoginAndPassword = true;
   bool get canStartAuth => !_isAuthProgress && _isCheckedLoginAndPassword;
   bool get isAuthProgress => _isAuthProgress;
   var colorButton = MaterialStateProperty.all(Colors.pink.shade200);

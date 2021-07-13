@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'data_model_news.g.dart';
+
 @JsonSerializable()
 class DataModelNews {
   int statusCode;
@@ -10,9 +11,6 @@ class DataModelNews {
 
   factory DataModelNews.fromJson(Map<String, dynamic> json) =>
       _$DataModelNewsFromJson(json);
-
-  Map<String, dynamic> toJson() =>
-      _$DataModelNewsToJson(this);
 }
 
 @JsonSerializable()
@@ -21,9 +19,9 @@ class Result {
   List<Posts> posts;
 
   Result({required this.count, required this.posts});
-  factory Result.fromJson(dynamic json) =>
-      _$ResultFromJson( json);
+  factory Result.fromJson(dynamic json) => _$ResultFromJson(json);
 }
+
 @JsonSerializable()
 class Posts {
   int id;
@@ -40,20 +38,20 @@ class Posts {
 
   Posts(
       {required this.id,
-        required this.meta,
-        required this.caption,
-        required this.tags,
-        required this.location,
-        required this.userId,
-        required this.photoId,
-        required this.createdAt,
-        required this.updatedAt,
-        required this.photo,
-        required this.user});
+      required this.meta,
+      required this.caption,
+      required this.tags,
+      required this.location,
+      required this.userId,
+      required this.photoId,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.photo,
+      required this.user});
 
-  factory Posts.fromJson(Map<String, dynamic> json) =>
-      _$PostsFromJson(json);
+  factory Posts.fromJson(Map<String, dynamic> json) => _$PostsFromJson(json);
 }
+
 @JsonSerializable()
 class Meta {
   List<dynamic> entries;
@@ -61,8 +59,8 @@ class Meta {
   Meta({required this.entries});
 
   factory Meta.fromJson(Map<String, dynamic> json) => _$MetaFromJson(json);
-
 }
+
 @JsonSerializable()
 class Photo {
   int height;
@@ -71,9 +69,9 @@ class Photo {
 
   Photo({required this.height, required this.width, required this.id});
 
-  factory Photo.fromJson(dynamic json) =>
-      _$PhotoFromJson(json);
+  factory Photo.fromJson(dynamic json) => _$PhotoFromJson(json);
 }
+
 @JsonSerializable()
 class User {
   int id;
@@ -82,9 +80,12 @@ class User {
   String firstName;
   String lastName;
 
-  User({required this.id, required this.username,
-    required this.avatar, required this.firstName, required this.lastName});
+  User(
+      {required this.id,
+      required this.username,
+      required this.avatar,
+      required this.firstName,
+      required this.lastName});
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      _$UserFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

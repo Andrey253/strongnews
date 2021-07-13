@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:themoviedb/data/data_providers/auth_data_provider.dart';
 import 'package:themoviedb/data/model/data_model_news.dart';
-import 'package:themoviedb/resources/resources.dart';
-import 'package:themoviedb/widgets/auth/auth_model.dart';
+import 'package:themoviedb/resources/app_images.dart';
 import 'package:themoviedb/widgets/main_screen/main_screen_model.dart';
 
 class NewsListWidget extends StatefulWidget {
@@ -47,11 +43,10 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                           border:
                               Border.all(color: Colors.black.withOpacity(0.2)),
                           borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(5),
-                          bottomLeft: Radius.circular(5),
-                          bottomRight: Radius.circular(40)
-                          ),
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(5),
+                              bottomLeft: Radius.circular(5),
+                              bottomRight: Radius.circular(40)),
                         ),
                         clipBehavior: Clip.hardEdge,
                         child: Row(
@@ -70,8 +65,11 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                                     children: [
                                       SizedBox(width: 30),
                                       Text(
-                                        news.caption == null ? '' : news.caption as String,
-                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                        news.caption == null
+                                            ? ''
+                                            : news.caption as String,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -80,8 +78,8 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                                   SizedBox(
                                     height: 20,
                                   ),
-                                  Text(news.updatedAt,
-
+                                  Text(
+                                    news.updatedAt,
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                   SizedBox(

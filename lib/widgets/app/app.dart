@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(backgroundColor: AppColors.mainDarkBlue),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: AppColors.mainDarkBlue,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.blueGrey,
+
         ),
-        primarySwatch: Colors.blue,
+
       ),
       routes: mainNavigation.routes,
       initialRoute: mainNavigation.initialRout(false),
