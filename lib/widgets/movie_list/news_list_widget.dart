@@ -1,15 +1,14 @@
-
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:themoviedb/data/data_providers/auth_data_provider.dart';
 import 'package:themoviedb/data/model/data_model_news.dart';
+import 'package:themoviedb/resources/resources.dart';
 import 'package:themoviedb/widgets/auth/auth_model.dart';
 import 'package:themoviedb/widgets/main_screen/main_screen_model.dart';
 
 class NewsListWidget extends StatefulWidget {
-
   const NewsListWidget({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +16,6 @@ class NewsListWidget extends StatefulWidget {
 }
 
 class _NewsListWidgetState extends State<NewsListWidget> {
-
   @override
   void initState() {
     super.initState();
@@ -27,61 +25,79 @@ class _NewsListWidgetState extends State<NewsListWidget> {
 
   @override
   Widget build(BuildContext context) {
-     final model = MainScreenProvider.watch(context)?.model;
-// if (model?.baerer is String && model!.enableRequest){
-//   model.getNews();
-// }
-    //print ('model?.baerer    ${model?.baerer}');
-
+    final model = MainScreenProvider.watch(context)?.model;
     final _objNews = model?.objectNews;
     if (_objNews is DataModelNews) {
       return Stack(
         children: [
           ListView.builder(
-              padding: EdgeInsets.only(top: 70),
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               itemCount: _objNews.result.count,
               itemExtent: 163,
               itemBuilder: (BuildContext context, int index) {
                 final news = _objNews.result.posts[index];
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Stack(
                     children: [
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          border: Border.all(color: Colors.black.withOpacity(
-                              0.2)),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          border:
+                              Border.all(color: Colors.black.withOpacity(0.2)),
+                          borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(5),
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(40)
+                          ),
                         ),
                         clipBehavior: Clip.hardEdge,
                         child: Row(
                           children: [
-                            Image(image: AssetImage('news?.photoId')),
-                            SizedBox(width: 20,),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(height: 20,),
-                                  Text('news.caption',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,),
-                                  SizedBox(height: 5,),
-                                  Text('news.caption',
-                                    style: TextStyle(color: Colors.grey),),
-                                  SizedBox(height: 20,),
-                                  Text(news.user.username,
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(width: 30),
+                                      Text(
+                                        news.caption == null ? '' : news.caption as String,
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(news.updatedAt,
+
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    news.createdAt,
                                     maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ],
                               ),
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                           ],
                         ),
                       ),
@@ -91,14 +107,20 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           onTap: () {},
                         ),
-                      )
+                      ),
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage(AppImages.avatar),
+                      ),
                     ],
                   ),
                 );
               }),
         ],
       );
-    } else return Center(child: Text('fdddfsf'));
+    } else
+      return Center(
+          child: SizedBox(
+              height: 100, width: 100, child: CircularProgressIndicator()));
   }
-
 }

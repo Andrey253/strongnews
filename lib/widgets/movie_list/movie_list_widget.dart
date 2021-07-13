@@ -133,9 +133,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.black.withOpacity(0.2)),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
+                    borderRadius: BorderRadius.all( Radius.circular(8)
                     ),
                     // boxShadow: [
                     //   BoxShadow(

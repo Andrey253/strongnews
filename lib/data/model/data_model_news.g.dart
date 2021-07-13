@@ -7,16 +7,6 @@ part of 'data_model_news.dart';
 // **************************************************************************
 
 DataModelNews _$DataModelNewsFromJson(Map<String, dynamic> json) {
-  final jsonStatusCode = json['statusCode'] as int;
-  final Map<String, dynamic> jsonResult = json['result'] as Map<String, dynamic>;
-  // print ('jsonStatusCode     $jsonStatusCode');
-  // print ('jsonResult     $jsonResult');
-  // print ('Result.fromJson(jsonResult)     ${Result.fromJson(jsonResult)}');
-  //
-  //
-  // print ('jsonResult '
-  //     '    ${DataModelNews(statusCode: jsonStatusCode,
-  //     result: Result.fromJson(jsonResult)).result}');
   return DataModelNews(
     statusCode: json['statusCode'] as int,
     result: Result.fromJson(json['result'] as Map<String, dynamic>),
@@ -30,10 +20,6 @@ Map<String, dynamic> _$DataModelNewsToJson(DataModelNews instance) =>
     };
 
 Result _$ResultFromJson(dynamic json) {
-  //print ('_ResultFromJson     $json');
-  // print ('count     ${json['count']}');
-  // print ('posts     ${json['posts'] as List<dynamic>}');
-
   return Result(
     count: json['count'] as int,
     posts: (json['posts'] as List<dynamic>)
@@ -78,7 +64,6 @@ Map<String, dynamic> _$PostsToJson(Posts instance) => <String, dynamic>{
 };
 
 Meta _$MetaFromJson(Map<String, dynamic> json) {
-  //print ('jsonMeta    ${json['entries'] as List<dynamic>}     ');
   return Meta(
     entries: json['entries'] as List<dynamic>,
   );
@@ -89,15 +74,13 @@ Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
 };
 
 Photo _$PhotoFromJson(dynamic json) {
-
-  if (json == null) { return Photo(height: 0, width: 0, id: '',);
-  } else{
+  if (json == null) return Photo(height: 0, width: 0, id: '',);
+  else
     return Photo(
       height: json['height'] as int,
       width: json['width'] as int,
       id: json['id'] as String,
     );
-  }
 }
 
 Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
