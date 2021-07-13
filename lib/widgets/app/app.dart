@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(backgroundColor: AppColors.mainDarkBlue),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: AppColors.mainDarkBlue,
-
         ),
 
       ),

@@ -48,6 +48,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
         fixedColor: Color(0xFFEE0000),
+        unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.list_alt),

@@ -59,10 +59,6 @@ class __FormWidgetState extends State<_FormWidget> {
   @override
   Widget build(BuildContext context) {
     final model = AuthProvider.read(context)?.model;
-    final textStyleButton = const TextStyle(
-      fontSize: 20,
-      color: Colors.white,
-    );
     final inputDecoration = InputDecoration(
       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       isCollapsed: true,
