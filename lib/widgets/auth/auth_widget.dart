@@ -154,6 +154,7 @@ class __FormWidgetState extends State<_FormWidget> {
   }
 }
 
+
 class _AuthButtonWidget extends StatelessWidget {
   const _AuthButtonWidget({
     Key? key,
