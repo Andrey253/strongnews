@@ -129,7 +129,8 @@ class __FormWidgetState extends State<_FormWidget> {
                 showDialog<AlertDialog>(
                     context: context,
                     builder: (BuildContext context) {
-                      return AppAlertDialog.showAlert(context, AppString.cookieData);
+                      return AppAlertDialog.showAlert(
+                          context, AppString.titleData,AppString.cookieData);
                     });
               },
             ),
@@ -144,7 +145,8 @@ class __FormWidgetState extends State<_FormWidget> {
                   showDialog<AlertDialog>(
                       context: context,
                       builder: (BuildContext context) {
-                        return AppAlertDialog.showAlert(context, AppString.cookiePolicy);;
+                        return AppAlertDialog.showAlert(
+                            context, AppString.titleCookie, AppString.cookiePolicy);;
                       });
                 }),
           ],
@@ -153,7 +155,6 @@ class __FormWidgetState extends State<_FormWidget> {
     );
   }
 }
-
 
 class _AuthButtonWidget extends StatelessWidget {
   const _AuthButtonWidget({
@@ -172,7 +173,6 @@ class _AuthButtonWidget extends StatelessWidget {
 
     return ElevatedButton(
         onPressed: onPressed,
-        // clipBehavior: Clip.hardEdge,
         style: ButtonStyle(
           enableFeedback: false,
           backgroundColor: model?.colorButton,

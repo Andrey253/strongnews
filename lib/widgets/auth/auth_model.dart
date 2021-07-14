@@ -56,12 +56,9 @@ class AuthModel extends ChangeNotifier {
         return;
       }
         await _authDataProvider.setBaererToken(baererToken);
-      final r = await _authDataProvider.getBaererToken();
-      //print (r);
-
         unawaited(
             Navigator.of(context)
-                .pushReplacementNamed(MainNavigationRouteNames.mainScreen, arguments: baererToken));
+                .pushReplacementNamed(MainNavigationRouteNames.mainScreen));
     } else{
       _errorMessege = 'login or password incorrect';
       notifyListeners();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppAlertDialog {
-  static AlertDialog showAlert(BuildContext context, String polocy) {
+  static AlertDialog showAlert(BuildContext context,String title, String polocy) {
     return AlertDialog(
-      title: Text('Политика использования данных'),
+      title: Text(title),
       content: SingleChildScrollView(
         child: Column(
           children: [
