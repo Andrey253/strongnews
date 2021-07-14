@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
-import 'package:themoviedb/api/api_client.dart';
-import 'package:themoviedb/data/data_providers/auth_data_provider.dart';
-import 'package:themoviedb/data/model/data_model_news.dart';
-import 'package:themoviedb/ui/navigation/main_navigation.dart';
+import 'package:strongnews/api/api_client.dart';
+import 'package:strongnews/data/data_providers/auth_data_provider.dart';
+import 'package:strongnews/data/model/data_model_news.dart';
+import 'package:strongnews/ui/navigation/main_navigation.dart';
 
 class MainScreenModel extends ChangeNotifier {
   final _apiClient = ApiClient();

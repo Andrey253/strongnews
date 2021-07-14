@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:themoviedb/ui/navigation/main_navigation.dart';
+import 'package:strongnews/ui/navigation/main_navigation.dart';
 
 class Movie{
   final int id;

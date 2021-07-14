@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:themoviedb/data/model/data_model_news.dart';
-import 'package:themoviedb/resources/app_images.dart';
-import 'package:themoviedb/widgets/main_screen/main_screen_model.dart';
+import 'package:strongnews/data/model/data_model_news.dart';
+import 'package:strongnews/resources/app_images.dart';
+import 'package:strongnews/widgets/main_screen/main_screen_model.dart';
 
 class NewsListWidget extends StatefulWidget {
   const NewsListWidget({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:themoviedb/widgets/app/app.dart';
+import 'package:strongnews/widgets/app/app.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,7 +1,8 @@
+
 import 'dart:convert';
 import 'dart:io';
-import 'package:themoviedb/data/model/data_model_news.dart';
-import 'package:themoviedb/data/model_token_access/response_token.dart';
+import 'package:strongnews/data/model/data_model_news.dart';
+import 'package:strongnews/data/model_token_access/response_token.dart';
 
 class ApiClient {
   final _client = HttpClient();

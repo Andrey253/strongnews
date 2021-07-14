@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:themoviedb/Theme/app_colors.dart';
-import 'package:themoviedb/resources/strings.dart';
-import 'package:themoviedb/widgets/auth/alertDialog.dart';
-import 'package:themoviedb/widgets/auth/auth_model.dart';
+import 'package:strongnews/Theme/app_colors.dart';
+import 'package:strongnews/resources/strings.dart';
+import 'package:strongnews/widgets/auth/alertDialog.dart';
+import 'package:strongnews/widgets/auth/auth_model.dart';
 
 class AuthWidget extends StatefulWidget {
   const AuthWidget({Key? key}) : super(key: key);

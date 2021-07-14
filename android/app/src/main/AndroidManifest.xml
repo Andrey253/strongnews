@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.themoviedb">
+    package="com.example.strongnews">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="themoviedb"
+        android:label="strongnews"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
