@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:strongnews/data/model/data_model_news.dart';
+import 'package:strongnews/library/widgets/inherited/provider.dart';
 import 'package:strongnews/resources/app_images.dart';
 import 'package:strongnews/widgets/main_screen/main_screen_model.dart';
 
@@ -15,13 +16,13 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   @override
   void initState() {
     super.initState();
-    final model = MainScreenProvider.read(context)?.model;
+    final model = NotifierProvider.read<MainScreenModel>(context);
     model?.readTokenAndSendGetRequest();
   }
 
   @override
   Widget build(BuildContext context) {
-    final model = MainScreenProvider.watch(context)?.model;
+    final model = NotifierProvider.watch<MainScreenModel>(context);
     final _objNews = model?.objectNews;
     if (_objNews is DataModelNews) {
       return Stack(
@@ -119,6 +120,8 @@ class _NewsListWidgetState extends State<NewsListWidget> {
     } else
       return Center(
           child: SizedBox(
-              height: 100, width: 100, child: CircularProgressIndicator()));
+              height: 100, width: 100, child: CircularProgressIndicator(
+            strokeWidth: 8,
+          )));
   }
 }

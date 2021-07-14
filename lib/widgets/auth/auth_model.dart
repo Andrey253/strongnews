@@ -14,7 +14,7 @@ class AuthModel extends ChangeNotifier {
 
   String? get errorMassege => _errorMessege;
   bool _isAuthProgress = false;
-  bool _isCheckedLoginAndPassword = false;
+  bool _isCheckedLoginAndPassword = true;
   bool get canStartAuth => !_isAuthProgress && _isCheckedLoginAndPassword;
   bool get isAuthProgress => _isAuthProgress;
   var colorButton = MaterialStateProperty.all(Colors.pink.shade200);
@@ -69,19 +69,19 @@ class AuthModel extends ChangeNotifier {
 
 
 
-class AuthProvider extends InheritedNotifier {
-  final AuthModel model;
-  const AuthProvider({
-    Key? key,
-    required this.model,
-    required Widget child,
-  }) : super(key: key, notifier: model, child: child);
-
-  static AuthProvider? watch(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AuthProvider>();
-  }
-  static AuthProvider? read(BuildContext context) {
-    final widget = context.getElementForInheritedWidgetOfExactType<AuthProvider>()?.widget;
-    return widget is AuthProvider ? widget : null;
-  }
-}
+// class AuthProvider extends InheritedNotifier {
+//   final AuthModel model;
+//   const AuthProvider({
+//     Key? key,
+//     required this.model,
+//     required Widget child,
+//   }) : super(key: key, notifier: model, child: child);
+//
+//   static AuthProvider? watch(BuildContext context) {
+//     return context.dependOnInheritedWidgetOfExactType<AuthProvider>();
+//   }
+//   static AuthProvider? read(BuildContext context) {
+//     final widget = context.getElementForInheritedWidgetOfExactType<AuthProvider>()?.widget;
+//     return widget is AuthProvider ? widget : null;
+//   }
+// }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:strongnews/Theme/app_colors.dart';
+import 'package:strongnews/library/widgets/inherited/provider.dart';
 import 'package:strongnews/resources/strings.dart';
 import 'package:strongnews/widgets/auth/alertDialog.dart';
 import 'package:strongnews/widgets/auth/auth_model.dart';
@@ -46,7 +47,7 @@ class _HeaderWidget extends StatelessWidget {
           SizedBox(height: 35),
           Text('Login', style: textStyle),
           Center(heightFactor: 2, child: Text('', style: textStyle)),
-          _FormWidget(),
+          const _FormWidget(),
         ],
       ),
     );
@@ -64,7 +65,7 @@ class __FormWidgetState extends State<_FormWidget> {
   bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.read(context)?.model;
+    final model = NotifierProvider.read<AuthModel>(context);
     final inputDecoration = InputDecoration(
       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       isCollapsed: true,
@@ -163,7 +164,7 @@ class _AuthButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.watch(context)?.model;
+    final model = NotifierProvider.watch<AuthModel>(context);
     final onPressed =
         model?.canStartAuth == true ? () => model?.auth(context) : null;
     final child = model?.isAuthProgress == true
@@ -186,7 +187,7 @@ class _ErrorMassege extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final errorMassege = AuthProvider.watch(context)?.model.errorMassege;
+    final errorMassege = NotifierProvider.watch<AuthModel>(context)?.errorMassege;
     if (errorMassege == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),

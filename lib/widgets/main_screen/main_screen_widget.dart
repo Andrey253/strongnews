@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:strongnews/resources/my_flutter_app_icons.dart';
 import 'package:strongnews/widgets/movie_list/movie_list_widget.dart';
 import 'package:strongnews/widgets/movie_list/news_list_widget.dart';
 
@@ -59,11 +60,11 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             label: alt_video
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.person_outline),
             label: alt_lk
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sports_volleyball_sharp),
+              icon: Icon(MyFlutterApp.dumbbell),
               label: alt_magazine
           ),
           BottomNavigationBarItem(
