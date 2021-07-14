@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:themoviedb/Theme/app_colors.dart';
+import 'package:themoviedb/resources/strings.dart';
+import 'package:themoviedb/widgets/auth/alertDialog.dart';
 import 'package:themoviedb/widgets/auth/auth_model.dart';
 
 class AuthWidget extends StatefulWidget {
@@ -124,7 +126,11 @@ class __FormWidgetState extends State<_FormWidget> {
                     color: Colors.blue, decoration: TextDecoration.underline),
               ),
               onTap: () {
-                print("sdfdsf");
+                showDialog<AlertDialog>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AppAlertDialog.showAlert(context, AppString.cookieData);
+                    });
               },
             ),
             SizedBox(height: 6),
@@ -135,7 +141,11 @@ class __FormWidgetState extends State<_FormWidget> {
                       color: Colors.blue, decoration: TextDecoration.underline),
                 ),
                 onTap: () {
-                  print("sdfdsf");
+                  showDialog<AlertDialog>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AppAlertDialog.showAlert(context, AppString.cookiePolicy);;
+                      });
                 }),
           ],
         ),
@@ -161,14 +171,12 @@ class _AuthButtonWidget extends StatelessWidget {
 
     return ElevatedButton(
         onPressed: onPressed,
-       // clipBehavior: Clip.hardEdge,
+        // clipBehavior: Clip.hardEdge,
         style: ButtonStyle(
           enableFeedback: false,
           backgroundColor: model?.colorButton,
         ),
-        child: Container(
-            height: 60,
-            child: Center(child: child)));
+        child: Container(height: 60, child: Center(child: child)));
   }
 }
 
