@@ -30,7 +30,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   Widget build(BuildContext context) {
     const alt_news = 'Новости';
     const alt_video = 'Видео';
-    const alt_lk = 'Личные настройки';
+    const alt_lk = 'ЛК';
     const alt_magazine = 'Магазин';
     const alt_about = 'О нас';
     return Scaffold(
