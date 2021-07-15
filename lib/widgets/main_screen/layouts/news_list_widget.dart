@@ -1,18 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:strongnews/data/model/data_model_news.dart';
+import 'package:strongnews/data/data_model_news/data_model_news.dart';
 import 'package:strongnews/library/widgets/inherited/provider.dart';
 import 'package:strongnews/resources/app_images.dart';
 import 'package:strongnews/widgets/main_screen/main_screen_model.dart';
 
 class NewsListWidget extends StatefulWidget {
   const NewsListWidget({Key? key}) : super(key: key);
-
   @override
   _NewsListWidgetState createState() => _NewsListWidgetState();
 }
 
 class _NewsListWidgetState extends State<NewsListWidget> {
+  final box_decor_item_news = BoxDecoration(
+    color: Colors.white,
+    border:       Border.all(color: Colors.black.withOpacity(0.2)),
+    borderRadius: BorderRadius.only(
+        topLeft:    Radius.circular(40),
+        topRight:   Radius.circular( 5),
+        bottomLeft: Radius.circular( 5),
+        bottomRight:Radius.circular(40)),
+  );
   @override
   void initState() {
     super.initState();
@@ -39,35 +47,22 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                   child: Stack(
                     children: [
                       Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border:
-                              Border.all(color: Colors.black.withOpacity(0.2)),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(5),
-                              bottomLeft: Radius.circular(5),
-                              bottomRight: Radius.circular(40)),
-                        ),
+                        decoration: box_decor_item_news,
                         clipBehavior: Clip.hardEdge,
                         child: Row(
                           children: [
-                            SizedBox(
-                              width: 20,
-                            ),
+                            SizedBox(width: 20),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  SizedBox(height: 10),
                                   Row(
                                     children: [
                                       SizedBox(width: 30),
                                       Text(
                                         news.caption == null
-                                            ? ''
+                                            ? 'без заголовка'
                                             : news.caption as String,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
@@ -76,13 +71,9 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    news.updatedAt,
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
+                                  SizedBox(height: 20),
+                                  Text(news.updatedAt,
+                                      style: TextStyle(color: Colors.grey)),
                                   SizedBox(
                                     height: 20,
                                   ),
@@ -120,8 +111,10 @@ class _NewsListWidgetState extends State<NewsListWidget> {
     } else
       return Center(
           child: SizedBox(
-              height: 100, width: 100, child: CircularProgressIndicator(
-            strokeWidth: 8,
-          )));
+              height: 100,
+              width: 100,
+              child: CircularProgressIndicator(
+                strokeWidth: 8,
+              )));
   }
 }

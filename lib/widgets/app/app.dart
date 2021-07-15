@@ -11,9 +11,6 @@ class MyApp extends StatelessWidget {
       title: 'Strong News',
       theme: ThemeData(
         appBarTheme: AppBarTheme(backgroundColor: AppColors.mainDarkBlue),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: AppColors.mainDarkBlue,
-        ),
       ),
       routes: mainNavigation.routes,
       initialRoute: mainNavigation.initialRout(false),

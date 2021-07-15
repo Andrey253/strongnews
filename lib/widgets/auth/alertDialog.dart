@@ -9,9 +9,7 @@ class AppAlertDialog {
           children: [
             Text(polocy),
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              onPressed: () { Navigator.of(context).pop();},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.pink)),
               child: Text('Я согласен'),

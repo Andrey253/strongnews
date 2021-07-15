@@ -1,46 +1,78 @@
-
 import 'dart:convert';
 import 'dart:io';
-import 'package:strongnews/data/model/data_model_news.dart';
-import 'package:strongnews/data/model_token_access/response_token.dart';
+import 'package:strongnews/data/data_model_news/data_model_news.dart';
+import 'package:strongnews/data/data_model_token_access/response_token.dart';
+import 'package:strongnews/resources/app_strings.dart';
+
+enum ApiClientExceptionType{ Network, Auth, Other }
+
+class ApiClientException implements Exception{
+  final ApiClientExceptionType type;
+  ApiClientException(this.type);
+}
 
 class ApiClient {
   final _client = HttpClient();
-  static const _host_get_token =
-      'https://app.ferfit.club/api/auth/refresh-tokens';
-  static const _host_get_news =
-      'https://app.ferfit.club/api/feed?limit=10&offset=0&maxDate=2021-05-06T18:26:42.820994';
-  static const _baerer =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTksImlhdCI6MTYyMDQ5MTYxNCwiZXhwIjoxMDAxNjIwNDkxNjE0fQ.zGqmT0dH2bUMkG5DltUciML5CCXDbXsdO3p5a6AH5Z8';
 
   Future<String> auth() async {
-    final url = Uri.parse(_host_get_token);
-    final request = await _client.postUrl(url);
-    request.headers.set('authorization', _baerer);
-    final response = await request.close();
-    final json = await response
-        .transform(utf8.decoder)
-        .toList()
-        .then((v) => v.join())
-        .then((value) => jsonDecode(value) as Map<String, dynamic>);
-    final bearerToken =
-        ResponseToken.fromJson(json as Map<String, dynamic>).token.access;
-    return bearerToken;
+    final url = Uri.parse(AppString.host_get_token);
+
+    try {
+      _client.connectionTimeout = Duration(seconds: 15);
+      final request = await _client.postUrl(url);
+      request.headers.set('authorization', AppString.bearer);
+      final response = await request.close();
+      if (response.statusCode == 401){
+        throw ApiClientException( ApiClientExceptionType.Auth);
+      }
+      final json = await response
+              .transform(utf8.decoder)
+              .toList()
+              .then((v) => v.join())
+              .then((value) => jsonDecode(value) as Map<String, dynamic>);
+      final bearerToken = ResponseToken.fromJson(json as Map<String, dynamic>).token.access;
+      if (bearerToken == null){
+        throw ApiClientException( ApiClientExceptionType.Auth);
+      }
+      return bearerToken;
+    } on SocketException {
+      throw ApiClientException( ApiClientExceptionType.Network);
+    } on ApiClientException {
+      rethrow;
+    } catch (_){
+      throw ApiClientException( ApiClientExceptionType.Other);
+    }
   }
 
-  Future<DataModelNews> getNews(String baererToken) async {
-    final url = Uri.parse(_host_get_news);
-    final request = await _client.getUrl(url);
-    request.headers.set('Authorization', 'Bearer $baererToken');
-    final response = await request.close();
-    final json = await response
-        .transform(utf8.decoder)
-        .toList()
-        .then((v) => v.join())
-        .then((value) => jsonDecode(value) as Map<String, dynamic>);
+  Future<DataModelNews> getNews(String bearerToken) async {
+    final url = Uri.parse(AppString.host_get_news);
 
-    final data_model_news =
-        DataModelNews.fromJson(json as Map<String, dynamic>);
-    return data_model_news;
+    try {
+      _client.connectionTimeout = Duration(seconds: 15);
+      final request = await _client.getUrl(url);
+      request.headers.set('Authorization', 'Bearer $bearerToken');
+      final response = await request.close();
+      if (response.statusCode == 401){
+        throw ApiClientException( ApiClientExceptionType.Other);
+      }
+      final json = await response
+              .transform(utf8.decoder)
+              .toList()
+              .then((v) => v.join())
+              .then((value) => jsonDecode(value) as Map<String, dynamic>);
+
+      final data_model_news =
+              DataModelNews.fromJson(json as Map<String, dynamic>);
+      if (data_model_news == null){
+        throw ApiClientException( ApiClientExceptionType.Other);
+      }
+      return data_model_news;
+    } on SocketException {
+      throw ApiClientException( ApiClientExceptionType.Network);
+    } on ApiClientException {
+      rethrow;
+    } catch (_){
+      throw ApiClientException( ApiClientExceptionType.Other);
+    }
   }
 }

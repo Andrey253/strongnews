@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:strongnews/Theme/app_colors.dart';
 import 'package:strongnews/library/widgets/inherited/provider.dart';
-import 'package:strongnews/resources/strings.dart';
+import 'package:strongnews/resources/app_strings.dart';
 import 'package:strongnews/widgets/auth/alertDialog.dart';
 import 'package:strongnews/widgets/auth/auth_model.dart';
 

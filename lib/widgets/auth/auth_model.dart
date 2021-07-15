@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:strongnews/api/api_client.dart';
 import 'package:strongnews/data/data_providers/auth_data_provider.dart';
+import 'package:strongnews/resources/app_strings.dart';
 import 'package:strongnews/ui/navigation/main_navigation.dart';
 
 class AuthModel extends ChangeNotifier {
@@ -41,8 +42,18 @@ class AuthModel extends ChangeNotifier {
       String? baererToken;
       try {
         baererToken = await _apiClient.auth();
-      } catch (errorGetToken) {
-        _errorMessege = 'Authorization failed';
+      } on ApiClientException catch (e) {
+        switch (e.type){
+          case ApiClientExceptionType.Network:
+            _errorMessege = AppErrors.network;
+            break;
+          case ApiClientExceptionType.Auth:
+            _errorMessege = AppErrors.auth;
+            break;
+          case ApiClientExceptionType.Other:
+            _errorMessege = AppErrors.other;
+            break;
+        }
       }
       _isAuthProgress =false;
 
@@ -50,38 +61,14 @@ class AuthModel extends ChangeNotifier {
         notifyListeners();
         return;
       }
-      if (baererToken == null){
-        _errorMessege = 'Unknown Error';
-        notifyListeners();
-        return;
-      }
-        await _authDataProvider.setBaererToken(baererToken);
-        unawaited(
+       await _authDataProvider.setBaererToken(baererToken);
+       unawaited(
             Navigator.of(context)
                 .pushReplacementNamed(MainNavigationRouteNames.mainScreen));
     } else{
-      _errorMessege = 'login or password incorrect';
+      _errorMessege = AppErrors.loginOrPasswordIncorrect;
       notifyListeners();
       return;
     }
   }
 }
-
-
-
-// class AuthProvider extends InheritedNotifier {
-//   final AuthModel model;
-//   const AuthProvider({
-//     Key? key,
-//     required this.model,
-//     required Widget child,
-//   }) : super(key: key, notifier: model, child: child);
-//
-//   static AuthProvider? watch(BuildContext context) {
-//     return context.dependOnInheritedWidgetOfExactType<AuthProvider>();
-//   }
-//   static AuthProvider? read(BuildContext context) {
-//     final widget = context.getElementForInheritedWidgetOfExactType<AuthProvider>()?.widget;
-//     return widget is AuthProvider ? widget : null;
-//   }
-// }
