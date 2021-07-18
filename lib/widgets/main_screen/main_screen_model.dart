@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:strongnews/api/api_client.dart';
 import 'package:strongnews/data/data_model_news/data_model_news.dart';
+
 import 'package:strongnews/data/data_providers/auth_data_provider.dart';
 import 'package:strongnews/resources/app_strings.dart';
 

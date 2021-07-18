@@ -32,15 +32,20 @@ class _NewsListWidgetState extends State<NewsListWidget> {
   Widget build(BuildContext context) {
     final model = NotifierProvider.watch<MainScreenModel>(context);
     final _objNews = model?.objectNews;
+    final _error = model?.errorMassege;
+    if(_error != null){
+      return Center(
+          child: Text(_error));
+    }
     if (_objNews is DataModelNews) {
       return Stack(
         children: [
           ListView.builder(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              itemCount: _objNews.result.count,
+              itemCount: _objNews.result?.count,
               itemExtent: 163,
               itemBuilder: (BuildContext context, int index) {
-                final news = _objNews.result.posts[index];
+                final news = _objNews.result?.posts[index];
                 return Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -61,9 +66,9 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                                     children: [
                                       SizedBox(width: 30),
                                       Text(
-                                        news.caption == null
+                                        news?.caption == null
                                             ? 'без заголовка'
-                                            : news.caption as String,
+                                            : news?.caption as String,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                         maxLines: 1,
@@ -72,13 +77,13 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                                     ],
                                   ),
                                   SizedBox(height: 20),
-                                  Text(news.updatedAt,
+                                  Text(news?.updatedAt ?? '' ,
                                       style: TextStyle(color: Colors.grey)),
                                   SizedBox(
                                     height: 20,
                                   ),
                                   Text(
-                                    news.createdAt,
+                                    news?.createdAt ?? '' ,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                   ),
