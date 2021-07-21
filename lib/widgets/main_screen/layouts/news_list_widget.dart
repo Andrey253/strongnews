@@ -88,7 +88,7 @@ class _NewsListWidgetState extends State<NewsListWidget> {
                               ),
                               SizedBox(height: 17),
                               Text(
-                                  returnNoNullText(news?.caption, 'Здесь преставлено тестовое сообщение. Оно отображается если в ответе от сервера в поле caption установлено значение null. Здесь преставлено тестовое сообщение. Оно отображается если в ответе от сервера в поле caption установлено значение null.'),
+                                  returnNoNullText(news?.caption, 'Здесь представлено тестовое сообщение. Оно отображается если в ответе от сервера в поле caption установлено значение null. Здесь представлено тестовое сообщение. Оно отображается если в ответе от сервера в поле caption установлено значение null.'),
                                   style: AppStyle.messageStyle),
                               SizedBox(height: 8),
                               NotifierProvider(
