@@ -11,6 +11,11 @@ class LikeModel extends ChangeNotifier {
       testNumberOfLikes[index]++;
       liked[index] = true;
       notifyListeners();
+    } else
+    if (liked[index] == true){
+      testNumberOfLikes[index]--;
+      liked[index] = false;
+      notifyListeners();
     }
   }
 
