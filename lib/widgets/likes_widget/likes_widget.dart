@@ -17,12 +17,13 @@ class LikesCommentsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = NotifierProvider.watch<LikeModel>(context);
     final testNumberOfComments = model?.testNumberOfComments[index];
-    var testNumberOfLikes = model?.testNumberOfLikes[index];
+    final testNumberOfLikes = model?.testNumberOfLikes[index];
+    final liked = model?.liked[index];
     return Row(
       children: [
         IconButton(
             onPressed:(){model?.testNumberOfLikesIncr(index);},
-            icon: Icon(Icons.favorite_outlined, color: testNumberOfLikes == 0 ? Colors.black26 : AppColors.mainColor2,)),
+            icon: Icon(Icons.favorite_outlined, color: liked == false ? Colors.black26 : AppColors.mainColor2,)),
         //SizedBox(width: 10),
         Container( width: 40 ,child: Text('$testNumberOfLikes',style: AppStyle.numberStyle, )),
         SizedBox(width: 10),
