@@ -75,7 +75,7 @@ class __FormWidgetState extends State<_FormWidget> {
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         isCollapsed: true,
         suffixIcon: IconButton(
-            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off, color: AppColors.mainColor1,),
             onPressed: () {
               _isObscure = !_isObscure;
               setState(() {});
